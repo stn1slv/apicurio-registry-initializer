@@ -42,7 +42,7 @@ echo "Getting JWT for $KEYCLOAK_USER user";
 export TOKEN=$(curl -ss -d "username=$KEYCLOAK_USER&password=$KEYCLOAK_PASSWORD&grant_type=password&client_id=$KEYCLOAK_CLIENT_ID&client_secret=$KEYCLOAK_CLIENT_SECRET" -H "Content-Type: application/x-www-form-urlencoded" -X POST $KEYCLOAK_ENDPOINT/realms/$KEYCLOAK_REALM/protocol/openid-connect/token | grep -o '"access_token":"[^"]*"' | cut -d'"' -f4)
 
 # Create JSON Schema
-var=$(curl -d @purchaseOrder.json -H 'X-Registry-ArtifactType: JSON'  -H 'X-Registry-Name: PurchaseOrder'  -H 'X-Registry-ArtifactId: PurchaseOrderJSON'  -H 'X-Registry-Version: 3.1.6'  -H 'X-Registry-Description: Artifact description' -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN"  -sL -w "%{http_code}\\n" -X POST $APICURIO_ENDPOINT/apis/registry/v2/groups/sales/artifacts)
+var=$(curl -d @purchaseOrder.json -H 'X-Registry-ArtifactType: JSON'  -H 'X-Registry-Name: PurchaseOrder'  -H 'X-Registry-ArtifactId: PurchaseOrderJSON'  -H 'X-Registry-Version: 3.1.6'  -H 'X-Registry-Description: Artifact description' -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN"  -sL -w "%{http_code}\\n" -X POST $APICURIO_ENDPOINT/apis/registry/v2/groups/sales/artifacts -o /dev/null)
 if [ "$var" == "200" ]; then
     echo "JSON Schema created";
 else
@@ -54,7 +54,7 @@ else
 fi
 
 # Create XML Schema
-var=$(curl -d @purchaseOrder.xsd -H 'X-Registry-ArtifactType: XSD' -H 'X-Registry-ArtifactId: PurchaseOrderXSD' -H 'X-Registry-Name: PurchaseOrder' -H 'X-Registry-Version: 3.1.6' -H 'X-Registry-Description: XSD Artifact description' -H 'Accept: application/json'  -H "Content-Type: application/xml" -H "Authorization: Bearer $TOKEN"  -sL -w "%{http_code}\\n" -X POST $APICURIO_ENDPOINT/apis/registry/v2/groups/sales/artifacts)
+var=$(curl -d @purchaseOrder.xsd -H 'X-Registry-ArtifactType: XSD' -H 'X-Registry-ArtifactId: PurchaseOrderXSD' -H 'X-Registry-Name: PurchaseOrder' -H 'X-Registry-Version: 3.1.6' -H 'X-Registry-Description: XSD Artifact description' -H 'Accept: application/json'  -H "Content-Type: application/xml" -H "Authorization: Bearer $TOKEN"  -sL -w "%{http_code}\\n" -X POST $APICURIO_ENDPOINT/apis/registry/v2/groups/sales/artifacts -o /dev/null)
 if [ "$var" == "200" ]; then
     echo "XML Schema created";
 else
