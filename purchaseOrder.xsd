@@ -1,22 +1,22 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:tns="http://tempuri.org/PurchaseOrderSchema.xsd" targetNamespace="http://tempuri.org/PurchaseOrderSchema.xsd" elementFormDefault="qualified">
-    <xsd:element name="PurchaseOrder" type="tns:PurchaseOrderType"/>
-    <xsd:complexType name="PurchaseOrderType">
-        <xsd:sequence>
-            <xsd:element name="ShipTo" type="tns:USAddress" maxOccurs="2"/>
-            <xsd:element name="BillTo" type="tns:USAddress"/>
-        </xsd:sequence>
-        <xsd:attribute name="OrderDate" type="xsd:date"/>
-    </xsd:complexType>
-
-    <xsd:complexType name="USAddress">
-        <xsd:sequence>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="street" type="xsd:string"/>
-            <xsd:element name="city" type="xsd:string"/>
-            <xsd:element name="state" type="xsd:string"/>
-            <xsd:element name="zip" type="xsd:integer"/>
-        </xsd:sequence>
-        <xsd:attribute name="country" type="xsd:string" fixed="US"/>
-    </xsd:complexType>
-</xsd:schema>
+<xs:schema elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="purchaseOrder">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="billTo"/>
+                <xs:element type="xs:date" name="orderDate"/>
+                <xs:element name="shipTo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="city"/>
+                            <xs:element type="xs:string" name="country"/>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:string" name="state"/>
+                            <xs:element type="xs:string" name="street"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
