@@ -5,6 +5,17 @@
     "description": "Purchase order",
     "type": "object",
     "properties": {
+        "name": {
+            "type": "string",
+            "maxLength": 512
+        },
+        "sku": {
+            "type": "string"
+        },
+        "price": {
+            "type": "number",
+            "minimum": 0
+        },
         "orderDate": {
             "type": "string",
             "format": "date"
@@ -13,10 +24,15 @@
             "type": "object",
             "properties": {
                 "country": {
-                    "type": "string"
+                    "type": "string",
+                    "default": "US",
+                    "minLength": 2,
+                    "maxLength": 2
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2
                 },
                 "city": {
                     "type": "string"
@@ -33,10 +49,30 @@
             }
         },
         "billTo": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            }
         }
     },
     "required": [
+        "name",
+        "sku",
+        "price",
         "orderDate",
         "shipTo"
     ]

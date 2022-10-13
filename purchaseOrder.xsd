@@ -3,16 +3,28 @@
     <xs:element name="purchaseOrder">
         <xs:complexType>
             <xs:sequence>
-                <xs:element type="xs:string" name="billTo"/>
-                <xs:element type="xs:date" name="orderDate"/>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:string" name="sku"/>
+                <xs:element type="xs:integer" name="price"/>
                 <xs:element name="shipTo">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element type="xs:string" name="city"/>
-                            <xs:element type="xs:string" name="country"/>
                             <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:string" name="address"/>
+                            <xs:element type="xs:string" name="city"/>
                             <xs:element type="xs:string" name="state"/>
-                            <xs:element type="xs:string" name="street"/>
+                            <xs:element type="xs:string" name="zip"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="billTo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:string" name="address"/>
+                            <xs:element type="xs:string" name="city"/>
+                            <xs:element type="xs:string" name="state"/>
+                            <xs:element type="xs:string" name="zip"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
