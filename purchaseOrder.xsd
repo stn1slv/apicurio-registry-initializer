@@ -3,9 +3,10 @@
     <xs:element name="purchaseOrder">
         <xs:complexType>
             <xs:sequence>
-                <xs:element type="xs:string" name="name"/>
+                <xs:element type="nameType" name="name"/>
                 <xs:element type="xs:string" name="sku"/>
                 <xs:element type="xs:integer" name="price"/>
+                <xs:element type="xs:date" name="orderDate"/>
                 <xs:element name="shipTo">
                     <xs:complexType>
                         <xs:sequence>
@@ -31,4 +32,9 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:simpleType name="nameType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="512"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

@@ -44,7 +44,7 @@
                     "type": "string"
                 },
                 "zip": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
