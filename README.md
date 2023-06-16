@@ -1,4 +1,4 @@
-# Apicurio-registry-initializer
+# Apicurio Registry Initializer
 This is a repo of the initializer for demo cases which uploads JSON & XML Schemas to Apicurio Registry in OpenID Connect configuration with KeyCloak.
 
 ## How to run it?
